@@ -1,0 +1,63 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Azania
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Azania.</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{{url_for('logout')}}">Log-out</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <p class="space_three"></p>
+    <div class="container">
+      <form class="form-signin", method="POST" action="">
+        <h1 ><strong>{{data['username']}}</strong></h1>
+        <p class="space_three"></p>
+        
+        <div class="picture-card">
+        <h3 class="form-signin-heading"><strong>Wallet</strong></h3>
+        <h3 class="form-signin-heading"><strong>Balance : </strong>{{data['balance']}} ZA</h3> 
+        <h3 class="form-signin-heading"><strong>Currency : </strong>R {{currency}}</h3> 
+      </div>
+      </form>
+      <p class="space_three"></p>
+      <center><form action="{{ url_for('receive') }}">
+        <button class="wide_blue_button"><strong>Receive Tokens</strong></button>
+      </form></center>
+      <center><form action="{{ url_for('receive') }}">
+        <button class="wide_orange_button"><strong>Send Tokens</strong></button>
+      </form></center>
+
+
+    
+   
+        
+      
+      
+    </div> <!-- /container -->
+
+    
+      
+{% endblock %}
